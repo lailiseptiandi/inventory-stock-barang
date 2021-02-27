@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('title')
+    
 
     @stack('before-')
     @include('includes.style')
@@ -13,7 +15,7 @@
 </head>
 <body>
     <div class="dashboard-main-wrapper">
-         @stack('before-navbar')
+        @stack('before-navbar')
         @include('includes.navbar')
         @stack('after-navbar')
 
@@ -24,7 +26,7 @@
         
         <div class="dashboard-wrapper">
             @yield('content')
-
+            
             @stack('before-footer')
             @include('includes.footer')
             @stack('after-footer')

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductInTable extends Migration
+class AddFieldCategoryToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateProductInTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_in', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('product_id')->unsigned();
-            $table->bigInteger('supplier_id')->unsigned();
-            $table->integer('qty');
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->bigInteger('category_id')->unsigned()->after('name');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateProductInTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_in');
+        Schema::table('products', function (Blueprint $table) {
+            //
+        });
     }
 }
